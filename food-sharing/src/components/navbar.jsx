@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 
@@ -32,7 +29,7 @@ class NavigationBar extends Component {
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Button className="m-1" variant="outline-success">Login</Button>
+                    <Button className="m-1" href="#" variant="outline-success">Login</Button>
                     <Button variant="outline-success">
                         <NavDropdown className="m-auto" title="Sign Up">
                             <NavDropdown.Item href="#action/3.1">
