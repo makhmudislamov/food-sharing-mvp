@@ -10,7 +10,7 @@ class App extends Component {
         <React.Fragment>
             <NavigationBar />
             <Body />
-          
+            <Footer />
         </React.Fragment>
     );
   }
