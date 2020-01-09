@@ -5,6 +5,7 @@ import Body from './components/homePageBody';
 import { BrowserRouter as Router, Switch, Route  } from "react-router-dom";
 import Auth from "./components/Auth";
 import SignUp from "./components/SignUp";
+import Dashboard from "./components/Dashboard";
 
 class App extends Component {
   // state = {  }
@@ -17,6 +18,7 @@ class App extends Component {
                     <Route path="/" exact component={Body} />
                     <Route path="/login" component={Auth} />
                     <Route path="/signup" component={SignUp} />
+                    <Route path="/dashboard" component={Dashboard} />
                     <Footer />
                 </React.Fragment>
             </Switch>

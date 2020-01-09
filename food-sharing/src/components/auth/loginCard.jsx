@@ -35,7 +35,11 @@ class LoginCard extends Component {
                                 label="Keep me logged in"
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            href="/dashboard"
+                        >
                             Submit
                         </Button>
                     </Form>
