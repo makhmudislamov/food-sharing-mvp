@@ -1,4 +1,6 @@
-import "bootstrap/dist/css/bootstrap.css";
+// import "./custom.scss";
+// import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';

@@ -1,17 +1,18 @@
-import "bootstrap/dist/css/bootstrap.css";
-import React from 'react';
-import NavBar from './components/navbar';
+import React, { Component } from "react";
+import NavigationBar from './components/navbar';
 import Footer from './components/footer';
 import Body from './components/homePageBody';
 
-function App() {
-  return (
-    <React.Fragment>
-      <NavBar />
-        <Body />
-      <Footer />
-    </React.Fragment>
-  );
+class App extends Component {
+  // state = {  }
+  render() { 
+    return (
+        <React.Fragment>
+            <NavigationBar />
+            <Body />
+        </React.Fragment>
+    );
+  }
 }
-
+ 
 export default App;
