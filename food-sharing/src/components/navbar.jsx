@@ -32,8 +32,20 @@ class NavigationBar extends Component {
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Button className="m-2" variant="outline-success">Login</Button>
-                    <Button variant="outline-success">Sign Up</Button>
+                    <Button className="m-1" variant="outline-success">Login</Button>
+                    <Button variant="outline-success">
+                        <NavDropdown className="m-auto" title="Sign Up">
+                            <NavDropdown.Item href="#action/3.1">
+                                Sign Up as a Restaurant
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.1">
+                                Sign Up as a Shelter
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.1">
+                                Sign Up as a Courier
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                    </Button>
                 </Navbar.Collapse>
             </Navbar>
         );
