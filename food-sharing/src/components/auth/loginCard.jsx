@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 

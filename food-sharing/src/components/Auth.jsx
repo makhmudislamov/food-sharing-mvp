@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Navbar from './components/navbar';
-import Footer from './components/footer';
-import LoginCard from './components/auth/loginCard';
+import Navbar from './navbar';
+import Footer from './footer';
+import LoginCard from './auth/loginCard';
 
 
 class Auth extends Component {
@@ -9,9 +9,9 @@ class Auth extends Component {
     render() { 
         return (
             <React.Fragment>
-                <Navbar />
+                {/* <Navbar /> */}
                 <LoginCard />
-                <Footer />
+                {/* <Footer /> */}
             </React.Fragment>
         );
     }
