@@ -6,14 +6,17 @@ import { Button } from "react-bootstrap";
 class LoginCard extends Component {
     // state = {  }
     render() { 
-        return (  
-            <Card style={{ width: '30rem' }}>
-                
+        return (
+            <Card style={{ width: "30rem" }}>
                 <Card.Body>
+                    <Card.Title>Login</Card.Title>
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Control
+                                type="email"
+                                placeholder="Enter email"
+                            />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>
@@ -21,10 +24,16 @@ class LoginCard extends Component {
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Keep me logged in" />
+                            <Form.Check
+                                type="checkbox"
+                                label="Keep me logged in"
+                            />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit

@@ -7,6 +7,7 @@ class SignUpForm extends Component {
         return (
             <Card style={{ width: "30rem" }}>
                 <Card.Body>
+                    <Card.Title> Sign Up to end Hunger in SF</Card.Title>
                     <Form>
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridEmail">
@@ -61,7 +62,10 @@ class SignUpForm extends Component {
                         </Form.Row>
 
                         <Form.Group id="formGridCheckbox">
-                            <Form.Check type="checkbox" label="Keep me logged in" />
+                            <Form.Check
+                                type="checkbox"
+                                label="Keep me signed in"
+                            />
                         </Form.Group>
 
                         <Button variant="primary" type="submit">
