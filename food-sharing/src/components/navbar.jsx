@@ -10,36 +10,30 @@ class NavigationBar extends Component {
     render() { 
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="#home">Food Sharing</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                        <Nav.Link href="#home">About Us</Nav.Link>
+                        <Nav.Link href="#link">FAQ</Nav.Link>
+                        <NavDropdown title="Stakeholders" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">
-                                Action
+                                Restaurants
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
-                                Another action
+                                Homeless Shelters
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.3">
-                                Something
+                                Volunteer-Couriers
                             </NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">
-                                Separated link
+                                Team
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Form inline>
-                        <FormControl
-                            type="text"
-                            placeholder="Search"
-                            className="mr-sm-2"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+                    <Button className="m-2" variant="outline-success">Login</Button>
+                    <Button variant="outline-success">Sign Up</Button>
                 </Navbar.Collapse>
             </Navbar>
         );
