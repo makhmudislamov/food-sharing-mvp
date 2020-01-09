@@ -1,32 +1,33 @@
+import "bootstrap/dist/css/bootstrap.css";
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+
 
 
 class NavBar extends Component {
     // state = {  }
     render() { 
         return (
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">
+            <ul className="nav justify-content-center">
+                <li className="nav-item">
+                    <a className="nav-link active" href="#">
                         Active
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                <li className="nav-item">
+                    <a className="nav-link" href="#">
                         Link
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                <li className="nav-item">
+                    <a className="nav-link" href="#">
                         Link
                     </a>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <a
-                        class="nav-link disabled"
+                        className="nav-link disabled"
                         href="#"
-                        tabindex="-1"
+                        tabIndex="-1"
                         aria-disabled="true"
                     >
                         Disabled
