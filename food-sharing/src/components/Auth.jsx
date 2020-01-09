@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Dashboard from './Dashboard';
-import LoginCard from './auth/loginCard';
+import LoginCard from './cards/loginCard';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class Auth extends Component {
