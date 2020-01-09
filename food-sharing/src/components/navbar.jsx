@@ -7,7 +7,7 @@ class NavigationBar extends Component {
     render() { 
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">Zero Hunger</Navbar.Brand>
+                <Navbar.Brand href="/">Zero Hunger</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -32,7 +32,7 @@ class NavigationBar extends Component {
                     <Button className="m-1" href="/login" variant="outline-success">Login</Button>
                     <Button variant="outline-success">
                         <NavDropdown className="m-auto" title="Sign Up">
-                            <NavDropdown.Item href="#action/3.1">
+                            <NavDropdown.Item href="/signup">
                                 Sign Up as a Restaurant
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.1">
