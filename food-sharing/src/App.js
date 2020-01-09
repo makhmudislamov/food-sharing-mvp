@@ -10,13 +10,15 @@ class App extends Component {
   render() { 
     return (
         <Router>
-            <React.Fragment>
-                <NavigationBar />
-                <Body />
-                <Route path="/login" component={Auth}/>
-                <Footer />
-            </React.Fragment>
-        </Router> 
+            <Switch>
+                <React.Fragment>
+                    <NavigationBar />
+                    <Route path="/" exact component={Body} />
+                    <Route path="/login" component={Auth} />
+                    <Footer />
+                </React.Fragment>
+            </Switch>
+        </Router>
     );
   }
 }
