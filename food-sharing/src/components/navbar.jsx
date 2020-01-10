@@ -7,7 +7,7 @@ class NavigationBar extends Component {
     render() { 
         return (
             <Navbar style={{paddingRight: "5%"}} bg="light" expand="lg">
-                <Navbar.Brand href="/">Zero Hunger</Navbar.Brand>
+                <Navbar.Brand style={{fontWeight: "bold"}} href="/">Zero Hunger</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

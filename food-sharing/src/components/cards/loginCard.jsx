@@ -6,7 +6,7 @@ class LoginCard extends Component {
     render() {
         return (
             // add paddingleft and padding top
-            <Card style={{ width: "30rem", marginLeft: "50px" }}>
+            <Card style={{ width: "30rem", marginLeft: "200px", marginTop: "250px" }}>
                 <Card.Body>
                     <Card.Title>Login</Card.Title>
                     <Form>

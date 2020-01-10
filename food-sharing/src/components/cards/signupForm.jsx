@@ -5,7 +5,13 @@ class SignUpForm extends Component {
     // state = {  }
     render() { 
         return (
-            <Card style={{ width: "30rem" }}>
+            <Card
+                style={{
+                    width: "30rem",
+                    marginLeft: "100px",
+                    marginTop: "150px"
+                }}
+            >
                 <Card.Body>
                     <Card.Title> Sign Up to end Hunger in SF</Card.Title>
                     <Form>
