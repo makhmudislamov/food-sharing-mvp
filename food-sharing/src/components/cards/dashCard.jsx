@@ -5,7 +5,7 @@ class FoodCard extends Component {
     render() { 
         return (
             <React.Fragment>
-                <>
+                <div style={{ display: "flex", flexWrap: "wrap", margin: "20px", justifyContent: "space-around"}}>
                     <Card bg="primary" text="white" style={{ width: "20rem" }}>
                         <Card.Header>Status: Pickup in Progress</Card.Header>
                         <Card.Body>
@@ -57,13 +57,13 @@ class FoodCard extends Component {
                                 Amount: 3 <br />
                                 Scheduled Pickup time (PST): 4PM <br />
                                 Assigned Volunteer: In Progress <br />
-                                Volunteer's contact:  <br />
+                                Volunteer's contact: <br />
                                 Destination: Kind Hearts Org <br />
                             </Card.Text>
                         </Card.Body>
                     </Card>
                     <br />
-                </>
+                </div>
             </React.Fragment>
         );
     }

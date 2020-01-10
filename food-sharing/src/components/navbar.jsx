@@ -6,7 +6,7 @@ class NavigationBar extends Component {
     // state = {  }
     render() { 
         return (
-            <Navbar bg="light" expand="lg">
+            <Navbar style={{paddingRight: "5%"}} bg="light" expand="lg">
                 <Navbar.Brand href="/">Zero Hunger</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -29,7 +29,7 @@ class NavigationBar extends Component {
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Button className="m-1" href="/login" variant="outline-success">Login</Button>
+                    <Button style={{padding: "12px"}} className="m-1" href="/login" variant="outline-success">Login</Button>
                     <Button variant="outline-success">
                         <NavDropdown className="m-auto" title="Sign Up">
                             <NavDropdown.Item href="/signup">

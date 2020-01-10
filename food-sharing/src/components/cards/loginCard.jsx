@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-import { Card } from "react-bootstrap";
-import { Form } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import React, { Component } from "react";
+import { Card, Form, Button } from "react-bootstrap";
 
 class LoginCard extends Component {
     // state = {  }
-    render() { 
+    render() {
         return (
-            <Card style={{ width: "30rem" }}>
+            // add paddingleft and padding top
+            <Card style={{ width: "30rem", marginLeft: "50px" }}>
                 <Card.Body>
                     <Card.Title>Login</Card.Title>
                     <Form>
@@ -48,5 +47,5 @@ class LoginCard extends Component {
         );
     }
 }
- 
+
 export default LoginCard;
