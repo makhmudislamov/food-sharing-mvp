@@ -1,13 +1,20 @@
-import React from "react";
-import Joi from "joi-browser";
-import { Form, Button, Card } from "react-bootstrap";
-import FormMethods from "./common/formMethods";
+import React from 'react';
+import { Form, Card } from 'react-bootstrap';
+import Joi from 'joi-browser';
+import FormMethods from './common/formMethods';
+
 class SignUpForm extends FormMethods {
     state = {
         data: {
             username: "",
             password: "",
-            passwordConfirm: ""
+            phoneNum: "",
+            address: "",
+            address2: "",
+            city: "",
+            state: "",
+            zipCode: ""
+
         },
         errors: {}
     };
@@ -19,52 +26,75 @@ class SignUpForm extends FormMethods {
         password: Joi.string()
             .required()
             .label("Password"),
-        passwordConfirm: Joi.string()
+        phoneNum: Joi.string()
             .required()
-            .label("Password confirmation")
+            .label("Phone Number"),
+        address: Joi.string()
+            .required()
+            .label("Address"),
+        address2: Joi.string().label("Address 2"),
+        city: Joi.string()
+            .required()
+            .label("City"),
+        state: Joi.string()
+            .required()
+            .label("State"),
+        zipCode: Joi.string()
+            .required()
+            .label("Zip Code"),
     };
 
     doSubmit = () => {
-        // call ther server
+        // call the server
         console.log("Signed Up");
     };
-
     render() {
         return (
             <Card
                 style={{
                     width: "30rem",
-                    marginLeft: "200px",
-                    marginTop: "150px"
+                    marginLeft: "100px",
+                    marginTop: "90px"
                 }}
             >
                 <Card.Body>
-                    <Card.Title>Create data</Card.Title>
+                    <Card.Title> Sign Up to end Hunger in SF</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
+                            {this.renderInput(
+                                "username",
+                                "Username",
+                                "Enter Email"
+                            )}
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                            {this.renderInput(
+                                "password",
+                                "Password",
+                                "Enter Password",
+                                "password"
+                            )}
+
                         {this.renderInput(
-                            "username",
-                            "Username",
-                            "Enter Email"
+                            "phoneNum",
+                            "Phone Number",
+                            "415-123-4567"
                         )}
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
+                        {this.renderInput("address", "Address", "123 Main st")}
+
                         {this.renderInput(
-                            "password",
-                            "Password",
-                            "Enter Password",
-                            "password"
+                            "address2",
+                            "Address 2",
+                            "Apt/Suite, Floor..."
                         )}
-                        {this.renderInput(
-                            "passwordConfirm",
-                            "Confirm Password",
-                            "Confirm Password",
-                            "password"
-                        )}
-                        <Form.Group>
+
+                            {this.renderInput("city", "City", "San Francisco")}
+                            {this.renderInput("state", "State", "CA or NY")}
+                            {this.renderInput("zipCode", "Zip Code", "94133")}
+                        <Form.Group id="formGridCheckbox">
                             <Form.Check
                                 type="checkbox"
-                                label="Keep me logged in"
+                                label="Keep me signed in"
                             />
                         </Form.Group>
                         {this.renderButton("Sign Up")}
@@ -74,5 +104,5 @@ class SignUpForm extends FormMethods {
         );
     }
 }
-
+ 
 export default SignUpForm;
