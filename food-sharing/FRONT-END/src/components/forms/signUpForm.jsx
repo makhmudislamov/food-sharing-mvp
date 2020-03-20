@@ -58,13 +58,13 @@ class SignUpForm extends FormMethods {
                 }}
             >
                 <Card.Body>
-                    <Card.Title> Sign Up to end Hunger in SF</Card.Title>
+                    <Card.Title> Sign Up to end hunger in SF</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
                             {this.renderInput(
                                 "username",
                                 "Username",
                                 "Enter Email"
-                            )}
+                                )}
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>
@@ -73,14 +73,17 @@ class SignUpForm extends FormMethods {
                                 "Password",
                                 "Enter Password",
                                 "password"
-                            )}
+                                )}
 
                         {this.renderInput(
                             "phoneNum",
                             "Phone Number",
                             "415-123-4567"
                         )}
-                        {this.renderInput("address", "Address", "123 Main st")}
+                        {this.renderInput(
+                            "address", 
+                            "Address", 
+                            "1234 Main st")}
 
                         {this.renderInput(
                             "address2",
