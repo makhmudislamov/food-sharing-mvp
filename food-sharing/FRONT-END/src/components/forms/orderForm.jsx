@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
 import Joi from "joi-browser";
+import axios from 'axios';
 import FormMethods from "./common/formMethods";
 
 class OrderForm extends FormMethods {
@@ -10,6 +11,8 @@ class OrderForm extends FormMethods {
             foodName: "",
             amount: ""
         },
+
+        _id: 0,
         errors: {}
     };
 
@@ -25,10 +28,30 @@ class OrderForm extends FormMethods {
             .label("Amount")
     };
 
-    doSubmit = () => {
+    doSubmit = async () => {
+
         // call the server
-        console.log("posted new food order");
+        // CAPTURING THE DATA FROM THE FORM BUT NOR SENDING IT TO DB
+        // const { status, foodName, amount } = this.state.data;
+        const OrderObject = {
+            status: this.state.data.status,
+            foodName: this.state.data.foodName,
+            amount: this.state.data.amount
+        };
+        console.log(`This is OrderObject ${OrderObject}`);
+        
+        // await axios.post("http://localhost:5001/orders", order);
+        await axios
+            .post("http://localhost:5001/orders", OrderObject)
+            .then( response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        console.log("Created new order", OrderObject); // not logging _id
     };
+
     render() {
         return (
             <Card

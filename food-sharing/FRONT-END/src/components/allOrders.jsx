@@ -2,19 +2,19 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-// const dbUri = "http://localhost:5000/home";
+const dbUri = "http://localhost:5001/home";
 class AllOrders extends Component {
     state = {
         orders: []
     };
 
-    // async componentDidMount() {
-    //     const { data: campaigns } = await axios
-    //         .get(dbUri)
-    //         .catch(err => console.log(err));
-    //     console.log(campaigns);
-    //     this.setState({ campaigns });
-    // }
+    async componentDidMount() {
+        const { data: orders } = await axios
+            .get(dbUri)
+            .catch(err => console.log(err));
+        console.log(orders);
+        this.setState({ orders });
+    }
 
     handleAdd = () => {
         console.log("Add");
@@ -44,27 +44,10 @@ class AllOrders extends Component {
                     <tbody>
                         {this.state.orders.map(order => (
                             <tr key={order._id}>
-                                <td>{order.title}</td>
-                                <td>
-                                    <button
-                                        className="btn btn-info btn-sm"
-                                        onClick={() =>
-                                            this.handleUpdate(order)
-                                        }
-                                    >
-                                        Update
-                                    </button>
-                                </td>
-                                <td>
-                                    <button
-                                        className="btn btn-danger btn-sm"
-                                        onClick={() =>
-                                            this.handleDelete(order)
-                                        }
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
+                                <td>{order.status}</td>
+                                <td>{order.foodName}</td>
+                                <td>{order.amount}</td>
+
                             </tr>
                         ))}
                     </tbody>
