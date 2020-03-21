@@ -45,9 +45,13 @@ class AllOrders extends Component {
                         {this.state.orders.map(order => (
                             <tr key={order._id}>
                                 <td>{order.status}</td>
-                                <td>{order.foodName}</td>
-                                <td>{order.amount}</td>
+                                <td>
+                                    <Link to="/orders/:id">
+                                        {order.foodName}
+                                    </Link>
+                                </td>
 
+                                <td>{order.amount}</td>
                             </tr>
                         ))}
                     </tbody>

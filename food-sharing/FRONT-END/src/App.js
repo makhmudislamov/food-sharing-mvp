@@ -9,6 +9,7 @@ import NotFound from './components/notFound';
 import LoginForm from './components/forms/loginForm';
 import OrderForm from './components/forms/orderForm';
 import AllOrders from './components/allOrders';
+import OneOrder from './components/oneOrder';
 
 class App extends Component {
   // state = {  }
@@ -22,6 +23,7 @@ class App extends Component {
                     <Route path="/login" component={LoginForm} />
                     <Route path="/signup" component={SignUpForm} />
                     <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/orders/:id" exact component={OneOrder} />
                     <Route path="/orders/new" exact component={OrderForm} />
                     <Route path="/orders" component={AllOrders} />
                     <Route path="/not-found" component={NotFound} />
