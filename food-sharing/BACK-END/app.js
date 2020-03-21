@@ -7,10 +7,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const logger = require("morgan");
-const campaigns = require("./controllers/campaigns");
-const dbRoute = "mongodb+srv://ihsan-mvp:IhsanMVP123@cluster0-lt6bw.mongodb.net/test?retryWrites=true&w=majority";
-
-
+const campaigns = require("./controllers/orders");
+const dbRoute =
+    "mongodb+srv://dbFoodDonate:FoodDonate123@cluster0-fo9ue.mongodb.net/test?retryWrites=true&w=majority";
 // The following line must appear AFTER const app = express() and before your routes!
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -37,8 +36,8 @@ db.once("open", () => console.log("connected to the database"));
 // checks if connection with the database is successful
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.listen(5000, () => {
-    console.log("App listening on port 5000!");
+app.listen(5001, () => {
+    console.log("App listening on port 5001!");
     console.log(ip.address());
 });
 
