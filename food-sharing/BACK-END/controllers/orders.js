@@ -3,8 +3,8 @@ const Order = require("../models/order");
 module.exports = (app) => {
 
     // INDEX
-    app.get("/home", (req, res) => {
-        Order.find()
+    app.get("/home", async (req, res) => {
+        await Order.find()
             .then(orders => {
                 // res.render("orders-index", { orders: orders });
                 // returning json
@@ -17,17 +17,18 @@ module.exports = (app) => {
     });
 
     // NEW
-    app.get('/orders/new', (req, res) => {
-        res.render('orders-new', {title: "New order"});
+    app.get('/orders/new', async (req, res) => {
+        await res.render('orders-new', {title: "New order"});
     });
 
     // CREATE
-    app.post('/orders', (req, res) => {
-        Order.create(req.body).then((order) => {
+    app.post('/orders', async (req, res) => {
+        await Order.create(req.body).then( async (order) => {
             console.log(order)
             // res.redirect(`/orders/${order._id}`) // Redirect to orders/:id
             // returning json
-            res.json(order)
+            await order.save()
+            res.send(order)
             // res.send...
         }).catch((err) => {
             console.log(err.message)

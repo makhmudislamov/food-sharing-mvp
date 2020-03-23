@@ -11,8 +11,6 @@ class OrderForm extends FormMethods {
             foodName: "",
             amount: ""
         },
-
-        _id: 0,
         errors: {}
     };
 
@@ -28,28 +26,40 @@ class OrderForm extends FormMethods {
             .label("Amount")
     };
 
-    doSubmit = async () => {
+    saveOrder(order) {
+        // if updating
+        if (order._id) {
+            const body = {...order};
+            delete body._id
+            return axios.put("http://localhost:5001" + "/" + order._id, body)
+        }
+        // new order
+        return axios.post("http://localhost:5001/orders", order);
+    };
 
+    doSubmit = async () => {
+        await this.saveOrder(this.state.data);
+        this.props.history.push("/orders")
         // call the server
         // CAPTURING THE DATA FROM THE FORM BUT NOR SENDING IT TO DB
         // const { status, foodName, amount } = this.state.data;
-        const OrderObject = {
-            status: this.state.data.status,
-            foodName: this.state.data.foodName,
-            amount: this.state.data.amount
-        };
-        console.log(`This is OrderObject ${OrderObject}`);
+        // const OrderObject = {
+        //     status: this.state.data.status,
+        //     foodName: this.state.data.foodName,
+        //     amount: this.state.data.amount
+        // };
+        // console.log(`This is OrderObject ${OrderObject}`);
         
-        // await axios.post("http://localhost:5001/orders", order);
-        await axios
-            .post("http://localhost:5001/orders", OrderObject)
-            .then( response => {
-                console.log(response);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-        console.log("Created new order", OrderObject); // not logging _id
+        // // await axios.post("http://localhost:5001/orders", order);
+        // await axios
+        //     .post("http://localhost:5001/orders", OrderObject)
+        //     .then( response => {
+        //         console.log(response);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
+        // console.log("Created new order", OrderObject); // not logging _id
     };
 
     render() {

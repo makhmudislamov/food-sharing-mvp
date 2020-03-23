@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from 'react-toastify'; //TODO: implement toast alert
 
 const dbUri = "http://localhost:5001/home";
 class AllOrders extends Component {
@@ -12,6 +13,7 @@ class AllOrders extends Component {
         const { data: orders } = await axios
             .get(dbUri)
             .catch(err => console.log(err));
+
         console.log(orders);
         this.setState({ orders });
     }
@@ -54,6 +56,7 @@ class AllOrders extends Component {
                                 <td>{order.amount}</td>
                             </tr>
                         ))}
+
                     </tbody>
                 </table>
             </React.Fragment>
