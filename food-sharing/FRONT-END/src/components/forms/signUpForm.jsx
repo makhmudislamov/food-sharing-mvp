@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Card } from 'react-bootstrap';
 import Joi from 'joi-browser';
 import FormMethods from './common/formMethods';
-
+import * as userService from '../services/userService'
 class SignUpForm extends FormMethods {
     state = {
         data: {
@@ -44,9 +44,9 @@ class SignUpForm extends FormMethods {
             .label("Zip Code"),
     };
 
-    doSubmit = () => {
+    doSubmit = async () => {
         // call the server
-        console.log("Signed Up");
+        await userService.register(this.state.data)
     };
     render() {
         return (
