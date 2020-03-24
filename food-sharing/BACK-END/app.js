@@ -24,7 +24,7 @@ app.use(methodOverride('_method'))
 // connecting to db
 // TODO: whitelist YOUR IP - now working on "connect from anywhere"
 mongoose
-    .connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         console.log("mongodb is connected");
     })
@@ -35,6 +35,7 @@ mongoose
 
 let db = mongoose.connection;
 mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
 db.once("open", () => console.log("connected to the database"));
 // checks if connection with the database is successful
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
