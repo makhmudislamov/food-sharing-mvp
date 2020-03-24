@@ -12,6 +12,7 @@ import LoginForm from './components/forms/loginForm';
 import OrderForm from './components/forms/orderForm';
 import AllOrders from './components/allOrders';
 import OneOrder from './components/oneOrder';
+import Logout from './components/logout';
 import "react-toastify/dist/ReactToastify.css"
 
 class App extends Component {
@@ -34,6 +35,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/" exact component={Body} />
                     <Route path="/login" component={LoginForm} />
+                    <Route path="/logout" component={Logout} />
                     <Route path="/signup" component={SignUpForm} />
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/orders" exact component={AllOrders} />
