@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Form } from "react-bootstrap";
 import Joi from "joi-browser";
 import FormMethods from "./common/formMethods";
-import { login } from '../services/authService';
+import auth from '../services/authService';
 class LoginForm extends FormMethods {
     state = {
         data: {
@@ -25,9 +25,7 @@ class LoginForm extends FormMethods {
         try {
             // call the server
             const { data } = this.state
-            const {data: jwt} = await login(data.username, data.password)
-            localStorage.setItem("token", jwt)
-            // this.props.history.push("/orders");
+            await auth.login(data.username, data.password)
             window.location = "/orders"
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {

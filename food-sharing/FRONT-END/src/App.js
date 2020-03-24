@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify"; 
-import jwtDecode from "jwt-decode";
 import NavigationBar from './components/navbar';
 import Footer from './components/footer';
 import Body from './components/homePageBody';
@@ -13,17 +12,16 @@ import OrderForm from './components/forms/orderForm';
 import AllOrders from './components/allOrders';
 import OneOrder from './components/oneOrder';
 import Logout from './components/logout';
+import auth from './components/services/authService';
 import "react-toastify/dist/ReactToastify.css"
 
 class App extends Component {
   state = {  }
 
   componentDidMount() {
-   try {
-      const jwt = localStorage.getItem("token");
-      const user = jwtDecode(jwt);
-      this.setState({ user });
-   } catch (ex) {}
+    const user = auth.getCurrentUser();
+    this.setState({ user });
+
   }
 
   render() { 

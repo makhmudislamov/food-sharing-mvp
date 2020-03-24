@@ -3,6 +3,8 @@ import { Form, Card } from 'react-bootstrap';
 import Joi from 'joi-browser';
 import FormMethods from './common/formMethods';
 import * as userService from '../services/userService'
+import auth from '../services/authService'
+
 class SignUpForm extends FormMethods {
     state = {
         data: {
@@ -48,7 +50,7 @@ class SignUpForm extends FormMethods {
         try {
             // call the server
             const response = await userService.register(this.state.data);
-            localStorage.setItem("token", response.headers['x-auth-token']);
+            auth.loginWithJwt(response.headers['x-auth-token']);
             // this.props.history.push("/orders")
             window.location = "/orders";
         } catch (ex) {
