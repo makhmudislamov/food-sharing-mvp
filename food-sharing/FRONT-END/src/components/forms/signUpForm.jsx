@@ -51,6 +51,8 @@ class SignUpForm extends FormMethods {
             // call the server
             const response = await userService.register(this.state.data);
             auth.loginWithJwt(response.headers['x-auth-token']);
+            console.log(response);
+            
             // this.props.history.push("/orders")
             window.location = "/orders";
         } catch (ex) {

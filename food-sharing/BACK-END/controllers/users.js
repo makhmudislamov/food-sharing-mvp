@@ -28,7 +28,7 @@ module.exports = (app) => {
     
         const token = user.generateAuthToken();
         res.header("x-auth-token", token).send(
-            _.pick(user, ["_id", "email"]) //TODO see this line
+            _.pick(user, ["_id", "username"])
         );
     });
 }

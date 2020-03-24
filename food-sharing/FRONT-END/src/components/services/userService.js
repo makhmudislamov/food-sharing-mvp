@@ -1,6 +1,6 @@
 import http from "./httpService";
-import dbUri from './config.json';
-const apiEndPoint = dbUri + "/users";
+import config from './config.json';
+const apiEndPoint = config.dbUri + "/users";
 
 export function register (user) {
     return http.post(apiEndPoint, {
