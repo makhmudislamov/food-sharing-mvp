@@ -54,13 +54,13 @@ module.exports = (app) => {
     });
 
     // UPDATE
-    app.put('/orders/:id', async (req, res) => {
+    app.put('/home/orders/:id', async (req, res) => {
         await Order.findByIdAndUpdate(req.params.id, req.body)
             .then( async order => {
             // res.redirect(`/orders/${order._id}`)
             await order.save();
             res.send(order);
-            await res.json(order); // TODO: delete this line if there is problem
+            // await res.json(order); // TODO: delete this line if there is problem
             })
             .catch(err => {
             console.log(err.message)
@@ -69,10 +69,11 @@ module.exports = (app) => {
 
     // DELETE
     // TODO: users shouldnt be able to delete the orders. Fix this later
-    app.delete('/orders/:id', function (req, res) {
+    app.delete('/home/orders/:id', async (req, res) => {
         console.log("DELETE order")
-        Order.findByIdAndRemove(req.params.id).then((order) => {
-            res.redirect('/home');
+        await Order.findByIdAndRemove(req.params.id).then( async (order) => {
+            // res.redirect('/home');
+            await res.send(order)
         }).catch((err) => {
             console.log(err.message);
         });

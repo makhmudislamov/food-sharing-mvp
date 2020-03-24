@@ -22,7 +22,7 @@ class AllOrders extends Component {
     handleUpdate = async (order) => {
         order.status = "Delivered"
         axios
-            .put("http://localhost:5001" +'/orders' + "/" + order._id, order)
+            .put(`${dbUri}/orders/${order._id}`, order)
             .catch(err => console.log(err));
 
         const orders = [...this.state.orders];
@@ -33,8 +33,11 @@ class AllOrders extends Component {
 
     };
 
-    handleDelete = campaign => {
-        console.log("Delete", campaign);
+    handleDelete = async order => {
+        await axios.delete(`${dbUri}/orders/${order._id}`);
+
+        const orders = this.state.orders.filter(p => p._id !== order._id);
+        this.setState({ orders })
     };
 
     render() {
@@ -81,8 +84,17 @@ class AllOrders extends Component {
                                     Destination: Kind Hearts Org <br />
                                 </Card.Text>
                             </Card.Body>
-                            <Button onClick={() => this.handleUpdate(order)}>
+                            <Button
+                                variant="warning"
+                                onClick={() => this.handleUpdate(order)}
+                            >
                                 Update Status
+                            </Button>
+                            <Button
+                                variant="danger"
+                                onClick={() => this.handleDelete(order)}
+                            >
+                                Delete
                             </Button>
                         </Card>
                     ))}
