@@ -1,6 +1,6 @@
 const auth = require("../middleware/auth");
-// const bcrypt = require("bcrypt");
-// const _ = require("lodash");
+const bcrypt = require("bcryptjs");
+const _ = require("lodash");
 const { User, validate } = require("../models/user");
 const express = require("express");
 // const router = express.Router();
@@ -8,36 +8,27 @@ const express = require("express");
 
 module.exports = (app) => {
 
-    app.get("/me", auth, async (req, res) => {
-        const user = await User.findById(req.user._id).select("-password");
-        res.send(user);
-    });
+    // app.get("/me", auth, async (req, res) => {
+    //     const user = await User.findById(req.user._id).select("-password");
+    //     res.send(user);
+    // });
     
-    app.post("/users", async (req, res) => {
+    app.post("/api/users", async (req, res) => {
         const { error } = validate(req.body);
         if (error) return res.status(400).send(error.details[0].message);
     
         let user = await User.findOne({ username: req.body.username });
         if (user) return res.status(400).send("User already registered.");
     
-        // user = new User(_.pick(req.body, ["username", "password"]));
-        user = new User({
-            username: req.body.username,
-            password: req.body.password,
-            phoneNum: req.body.phoneNum,
-            address: req.body.address,
-            address2: req.body.address2,
-            city: req.body.city,
-            state: req.body.state,
-            zipCode: req.body.zipCode
-        });
-        // const salt = await bcrypt.genSalt(10);
-        // user.password = await bcrypt.hash(user.password, salt);
+        user = new User(_.pick(req.body, ["username", "password", 
+        "phoneNum", "address", "address2", "city", "state", "zipCode"]));
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
         await user.save();
     
         const token = user.generateAuthToken();
         res.header("x-auth-token", token).send(
-            _.pick(user, ["_id", "name", "email"]) //TODO see this line
+            _.pick(user, ["_id", "email"]) //TODO see this line
         );
     });
 }

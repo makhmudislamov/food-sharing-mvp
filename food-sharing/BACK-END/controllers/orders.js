@@ -3,7 +3,7 @@ const Order = require("../models/order");
 module.exports = (app) => {
 
     // INDEX
-    app.get("/home", async (req, res) => {
+    app.get("/api", async (req, res) => {
         await Order.find()
             .then(orders => {
                 // res.render("orders-index", { orders: orders });
@@ -22,7 +22,7 @@ module.exports = (app) => {
     });
 
     // CREATE
-    app.post('/home/orders', async (req, res) => {
+    app.post('/api/orders', async (req, res) => {
         await Order.create(req.body).then( async (order) => {
             console.log(order)
             // res.redirect(`/orders/${order._id}`) // Redirect to orders/:id
@@ -54,7 +54,7 @@ module.exports = (app) => {
     });
 
     // UPDATE
-    app.put('/home/orders/:id', async (req, res) => {
+    app.put('/api/orders/:id', async (req, res) => {
         await Order.findByIdAndUpdate(req.params.id, req.body)
             .then( async order => {
             // res.redirect(`/orders/${order._id}`)
@@ -69,7 +69,7 @@ module.exports = (app) => {
 
     // DELETE
     // TODO: users shouldnt be able to delete the orders. Fix this later
-    app.delete('/home/orders/:id', async (req, res) => {
+    app.delete('/api/orders/:id', async (req, res) => {
         console.log("DELETE order")
         await Order.findByIdAndRemove(req.params.id).then( async (order) => {
             // res.redirect('/home');
