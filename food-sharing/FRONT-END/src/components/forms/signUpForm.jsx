@@ -45,8 +45,16 @@ class SignUpForm extends FormMethods {
     };
 
     doSubmit = async () => {
-        // call the server
-        await userService.register(this.state.data)
+        try {
+            // call the server
+            await userService.register(this.state.data)        
+        } catch (ex) {
+            if (ex.response && ex.response.status === 400) {
+                const errors = {...this.state.errors};
+                errors.username = ex.response.data;
+                this.setState({ errors })
+            }
+        }
     };
     render() {
         return (
