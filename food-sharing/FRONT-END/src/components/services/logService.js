@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/browser";
-import { Raven } from 'raven-js';
+import Raven from 'raven-js';
 
 function init(){
     Sentry.init({

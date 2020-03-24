@@ -3,8 +3,8 @@ import { Card, Form } from "react-bootstrap";
 import Joi from "joi-browser";
 import FormMethods from "./common/formMethods";
 import http from "../services/httpService";
-
-const dbUri = "http://localhost:5001/home";
+import config from "../services/config.json";
+// const dbUri = "http://localhost:5001/home";
 class OrderForm extends FormMethods {
     state = {
         data: {
@@ -33,13 +33,13 @@ class OrderForm extends FormMethods {
             const body = {...order};
             console.log(body);
             delete body._id
-            return http.put(`${dbUri}/${order._id}`, body);
+            return http.put(`${config.dbUri}/${order._id}`, body);
         }
         
         console.log(order);
         
         // new order
-        return http.post(`${dbUri}/orders`, order);
+        return http.post(`${config.dbUri}/orders`, order);
     };
 
     doSubmit = async () => {

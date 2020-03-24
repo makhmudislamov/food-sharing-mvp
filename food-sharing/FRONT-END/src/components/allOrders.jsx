@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import { toast } from 'react-toastify'; //TODO: implement toast alert
 import { Card, Button } from 'react-bootstrap';
 import http from "./services/httpService";
-const dbUri = "http://localhost:5001/home";
+import config from './services/config.json';
 
 
 class AllOrders extends Component {
@@ -13,7 +13,7 @@ class AllOrders extends Component {
 
     async componentDidMount() {
         const { data: orders } = await http
-            .get(`${dbUri}`)
+            .get(`${config.dbUri}`)
             .catch(err => console.log(err));
         this.setState({ orders });
     }
@@ -29,7 +29,7 @@ class AllOrders extends Component {
         
         try {
             await http
-            .put(`${dbUri}/orders/${order._id}`, order)
+            .put(`${config.dbUri}/orders/${order._id}`, order)
             .catch(err => console.log(err));
             // throw new Error("");
         } catch (ex) {
@@ -44,7 +44,7 @@ class AllOrders extends Component {
         this.setState({ orders })
         
         try {   
-            await http.delete(`${dbUri}/orders/${order._id}`);
+            await http.delete(`${config.dbUri}/orders/${order._id}`);
         } catch (ex) {
             if (ex.response && ex.response.status === 404) {
                 console.log("exception", ex);             
