@@ -7,7 +7,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const logger = require("morgan");
-const orders = require("./controllers/orders"); // TODO: change to orders
+const orders = require("./controllers/orders"); 
+const users = require("./controllers/users"); 
 const dbRoute =
     "mongodb+srv://dbFoodDonate:FoodDonate123@cluster0-fo9ue.mongodb.net/test?retryWrites=true&w=majority";
 // The following line must appear AFTER const app = express() and before your routes!
@@ -15,8 +16,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(logger("dev"));
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// app.use('/api/users', users);
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'))
 // connecting to db
@@ -43,4 +43,5 @@ app.listen(5001, () => {
 });
 
 orders(app);
+users(app);
 module.exports = app;

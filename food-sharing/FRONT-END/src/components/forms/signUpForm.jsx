@@ -34,7 +34,7 @@ class SignUpForm extends FormMethods {
         address: Joi.string()
             .required()
             .label("Address"),
-        address2: Joi.string().label("Address 2"),
+        address2: Joi.string().optional().label("Address 2"),
         city: Joi.string()
             .required()
             .label("City"),

@@ -4,13 +4,7 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        minlength: 2,
-        maxlength: 50
-    },
-    email: {
+    username: {
         type: String,
         required: true,
         minlength: 5,
@@ -23,8 +17,47 @@ const userSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 1024
     },
+    phoneNum: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 255
+    },
+    address: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 255
+    },
+    address2: {
+        type: String,
+        required: false,
+        minlength: 5,
+        maxlength: 255
+    },
+    city: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 255
+    },
+    state: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 255
+    },
+    zipCode: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 255
+    },
     isAdmin: Boolean
 });
+
+
+          
 
 userSchema.methods.generateAuthToken = function() {
     const token = jwt.sign(
@@ -43,11 +76,8 @@ const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
     const schema = {
-        name: Joi.string()
-            .min(2)
-            .max(50)
-            .required(),
-        email: Joi.string()
+
+        username: Joi.string()
             .min(5)
             .max(255)
             .required()
@@ -55,7 +85,31 @@ function validateUser(user) {
         password: Joi.string()
             .min(5)
             .max(255)
-            .required()
+            .required(),
+        phoneNum: Joi.string()
+            .min(5)
+            .max(255)
+            .required(),
+        address: Joi.string()
+            .min(5)
+            .max(255)
+            .required(),
+        address2: Joi.string()
+            .min(5)
+            .max(255)
+            .optional(),
+        city: Joi.string()
+            .min(5)
+            .max(255)
+            .required(),
+        state: Joi.string()
+            .min(5)
+            .max(255)
+            .required(),
+        zipCode: Joi.string()
+            .min(5)
+            .max(255)
+            .required(),
     };
 
     return Joi.validate(user, schema);
