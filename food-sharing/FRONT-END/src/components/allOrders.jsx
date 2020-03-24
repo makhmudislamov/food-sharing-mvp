@@ -34,10 +34,18 @@ class AllOrders extends Component {
     };
 
     handleDelete = async order => {
-        await axios.delete(`${dbUri}/orders/${order._id}`);
+        const originalOrders = this.state.orders;
 
         const orders = this.state.orders.filter(p => p._id !== order._id);
         this.setState({ orders })
+        
+        try {
+            await axios.delete(`${dbUri}/orders/${order._id}`);
+            throw new Error("")
+        } catch (ex) {
+            alert("Delete failed!")
+            this.setState({orders: originalOrders})
+        }
     };
 
     render() {
