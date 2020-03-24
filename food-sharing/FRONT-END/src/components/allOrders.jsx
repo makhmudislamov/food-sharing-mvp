@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 // import { toast } from 'react-toastify'; //TODO: implement toast alert
 import { Card, Button } from 'react-bootstrap';
-
 const dbUri = "http://localhost:5001/home";
+axios.interceptors.response.use(null, error => {
+    const expectedError =
+        error.response && error.response.status <= 400 && 
+        error.response.status < 500;
+    if (!expectedError) {
+        console.log("Logging error:", error);
+        alert("Unexpected error occured"); 
+    }
+    return Promise.reject(error);
+});
+
 class AllOrders extends Component {
     state = {
         orders: []
@@ -12,7 +22,7 @@ class AllOrders extends Component {
 
     async componentDidMount() {
         const { data: orders } = await axios
-            .get(dbUri)
+            .get(`${dbUri}`)
             .catch(err => console.log(err));
 
         console.log(orders);
@@ -20,31 +30,38 @@ class AllOrders extends Component {
     }
 
     handleUpdate = async (order) => {
+  
+        const originalOrders = [...this.state.orders];
         order.status = "Delivered"
-        axios
-            .put(`${dbUri}/orders/${order._id}`, order)
-            .catch(err => console.log(err));
-
         const orders = [...this.state.orders];
         const index = orders.indexOf(order)
         orders[index] = {...order};
-        this.setState({ orders });  
+        this.setState({ orders }); 
         
-
+        try {
+            await axios
+            .put(`${dbUri}/orders/${order._id}`, order)
+            .catch(err => console.log(err));
+            // throw new Error("");
+        } catch (ex) {
+            alert("Update failed!")
+            this.setState({ orders: originalOrders });
+        }
     };
 
     handleDelete = async order => {
         const originalOrders = this.state.orders;
-
         const orders = this.state.orders.filter(p => p._id !== order._id);
         this.setState({ orders })
         
-        try {
-            await axios.delete(`${dbUri}/orders/${order._id}`);
-            throw new Error("")
+        try {   
+            await axios.delete(`${dbUri}/orders/09809${order._id}`);
         } catch (ex) {
-            alert("Delete failed!")
+            if (ex.response && ex.response.status === 404) {
+                console.log("exception", ex);             
+                alert("This order has already been deleted");              
             this.setState({orders: originalOrders})
+            }
         }
     };
 
