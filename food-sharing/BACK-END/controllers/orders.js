@@ -22,7 +22,7 @@ module.exports = (app) => {
     });
 
     // CREATE
-    app.post('/orders', async (req, res) => {
+    app.post('/home/orders', async (req, res) => {
         await Order.create(req.body).then( async (order) => {
             console.log(order)
             // res.redirect(`/orders/${order._id}`) // Redirect to orders/:id
