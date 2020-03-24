@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify"; 
+import jwtDecode from "jwt-decode";
 import NavigationBar from './components/navbar';
 import Footer from './components/footer';
 import Body from './components/homePageBody';
@@ -14,12 +15,21 @@ import OneOrder from './components/oneOrder';
 import "react-toastify/dist/ReactToastify.css"
 
 class App extends Component {
-  // state = {  }
+  state = {  }
+
+  componentDidMount() {
+   try {
+      const jwt = localStorage.getItem("token");
+      const user = jwtDecode(jwt);
+      this.setState({ user });
+   } catch (ex) {}
+  }
+
   render() { 
     return (
         <React.Fragment>
             <ToastContainer />
-            <NavigationBar />
+            <NavigationBar user={this.state.user}/>
             <main className="conrainter">
                 <Switch>
                     <Route path="/" exact component={Body} />
