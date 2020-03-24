@@ -27,7 +27,8 @@ class LoginForm extends FormMethods {
             const { data } = this.state
             const {data: jwt} = await login(data.username, data.password)
             localStorage.setItem("token", jwt)
-            this.props.history.push("/orders");
+            // this.props.history.push("/orders");
+            window.location = "/orders"
         } catch (ex) {
             if (ex.response && ex.response.status === 400) {
                 const errors = { ...this.state.errors };
