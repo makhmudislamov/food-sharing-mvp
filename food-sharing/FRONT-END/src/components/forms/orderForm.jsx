@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
 import Joi from "joi-browser";
-import axios from 'axios';
 import FormMethods from "./common/formMethods";
+import http from "../services/httpService";
+
 
 class OrderForm extends FormMethods {
     state = {
@@ -32,13 +33,13 @@ class OrderForm extends FormMethods {
             const body = {...order};
             console.log(body);
             delete body._id
-            return axios.put(`http://localhost:5001/${order._id}`, body);
+            return http.put(`http://localhost:5001/${order._id}`, body);
         }
         
         console.log(order);
         
         // new order
-        return axios.post("http://localhost:5001/orders", order);
+        return http.post("http://localhost:5001/orders", order);
     };
 
     doSubmit = async () => {
@@ -54,7 +55,7 @@ class OrderForm extends FormMethods {
         // };
         // console.log(`This is OrderObject ${OrderObject}`);
         
-        // // await axios.post("http://localhost:5001/orders", order);
+        // // await http.post("http://localhost:5001/orders", order);
         // await axios
         //     .post("http://localhost:5001/orders", OrderObject)
         //     .then( response => {

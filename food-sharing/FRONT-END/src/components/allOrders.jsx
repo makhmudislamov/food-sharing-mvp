@@ -1,19 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 // import { toast } from 'react-toastify'; //TODO: implement toast alert
 import { Card, Button } from 'react-bootstrap';
+import http from "./services/httpService";
 const dbUri = "http://localhost:5001/home";
-axios.interceptors.response.use(null, error => {
-    const expectedError =
-        error.response && error.response.status <= 400 && 
-        error.response.status < 500;
-    if (!expectedError) {
-        console.log("Logging error:", error);
-        alert("Unexpected error occured"); 
-    }
-    return Promise.reject(error);
-});
+
 
 class AllOrders extends Component {
     state = {
@@ -21,11 +12,9 @@ class AllOrders extends Component {
     };
 
     async componentDidMount() {
-        const { data: orders } = await axios
+        const { data: orders } = await http
             .get(`${dbUri}`)
             .catch(err => console.log(err));
-
-        console.log(orders);
         this.setState({ orders });
     }
 
@@ -39,7 +28,7 @@ class AllOrders extends Component {
         this.setState({ orders }); 
         
         try {
-            await axios
+            await http
             .put(`${dbUri}/orders/${order._id}`, order)
             .catch(err => console.log(err));
             // throw new Error("");
@@ -55,7 +44,7 @@ class AllOrders extends Component {
         this.setState({ orders })
         
         try {   
-            await axios.delete(`${dbUri}/orders/09809${order._id}`);
+            await http.delete(`${dbUri}/orders/${order._id}`);
         } catch (ex) {
             if (ex.response && ex.response.status === 404) {
                 console.log("exception", ex);             
