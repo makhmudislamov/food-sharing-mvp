@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Form } from "react-bootstrap";
 import Joi from "joi-browser";
 import FormMethods from "./common/formMethods";
-
+import { login } from '../services/authService';
 class LoginForm extends FormMethods {
     state = {
         data: {
@@ -21,9 +21,10 @@ class LoginForm extends FormMethods {
             .label("Password")
     };
 
-    doSubmit = () => {
+    doSubmit = async () => {
         // call the server
-        console.log("Logged In");
+        const { data } = this.state
+        await login(data.username, data.password)
     };
 
     render() {
