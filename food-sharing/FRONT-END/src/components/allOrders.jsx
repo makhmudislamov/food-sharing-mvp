@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { toast } from 'react-toastify'; //TODO: implement toast alert
+// import { toast } from 'react-toastify'; //TODO: implement toast alert
+import { Card, Button } from 'react-bootstrap';
 
 const dbUri = "http://localhost:5001/home";
 class AllOrders extends Component {
@@ -18,12 +19,18 @@ class AllOrders extends Component {
         this.setState({ orders });
     }
 
-    handleAdd = () => {
-        console.log("Add");
-    };
+    handleUpdate = async (order) => {
+        order.status = "Delivered"
+        axios
+            .put("http://localhost:5001" +'/orders' + "/" + order._id, order)
+            .catch(err => console.log(err));
 
-    handleUpdate = campaign => {
-        console.log("Update", campaign);
+        const orders = [...this.state.orders];
+        const index = orders.indexOf(order)
+        orders[index] = {...order};
+        this.setState({ orders });  
+        
+
     };
 
     handleDelete = campaign => {
@@ -33,32 +40,53 @@ class AllOrders extends Component {
     render() {
         return (
             <React.Fragment>
-                <h2>All posted orders will be here</h2>
+                <h2>Order History</h2>
                 <Link to="/orders/new">New Order</Link>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Status</th>
-                            <th>Food Name</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.orders.map(order => (
-                            <tr key={order._id}>
-                                <td>{order.status}</td>
-                                <td>
-                                    <Link to="/orders/:id">
+                <div
+                    style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        margin: "20px",
+                        justifyContent: "space-around"
+                    }}
+                >
+                    {this.state.orders.map((order, _id) => (
+                        <Card
+                            key={_id}
+                            bg="primary"
+                            text="white"
+                            style={{ width: "20rem" }}
+                        >
+                            <Card.Header key={_id}>
+                                Status: {order.status}
+                            </Card.Header>
+                            <Card.Body>
+                                <Card.Title>
+                                    <Link
+                                        to={`/orders/${_id}`}
+                                        style={{
+                                            color: "white",
+                                            textDecoration: "underline"
+                                        }}
+                                        key={_id}
+                                    >
                                         {order.foodName}
                                     </Link>
-                                </td>
-
-                                <td>{order.amount}</td>
-                            </tr>
-                        ))}
-
-                    </tbody>
-                </table>
+                                </Card.Title>
+                                <Card.Text key={_id}>
+                                    Amount: {order.amount} <br />
+                                    Scheduled Pickup time (PST): 2PM <br />
+                                    Assigned Volunteer: Joe Rogan <br />
+                                    Volunteer's contact: 415-123-4567 <br />
+                                    Destination: Kind Hearts Org <br />
+                                </Card.Text>
+                            </Card.Body>
+                            <Button onClick={() => this.handleUpdate(order)}>
+                                Update Status
+                            </Button>
+                        </Card>
+                    ))}
+                </div>
             </React.Fragment>
         );
     }

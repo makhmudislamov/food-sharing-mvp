@@ -36,11 +36,11 @@ module.exports = (app) => {
     });
 
     // SHOW
-    app.get('/orders/:id', (req, res) => {
-        Order.findById(req.params.id).then((order) => {
-            res.render('orders-show', { order: order })
+    app.get('/orders/:id', async (req, res) => {
+        await Order.findById(req.params.id).then(async (order) => {
+            // res.render('orders-show', { order: order })
             // returning json
-            // res.json(order)
+            await res.json(order)
         }).catch((err) => {
             console.log(err.message);
         });
@@ -54,10 +54,13 @@ module.exports = (app) => {
     });
 
     // UPDATE
-    app.put('/orders/:id', (req, res) => {
-        Order.findByIdAndUpdate(req.params.id, req.body)
-            .then(order => {
-            res.redirect(`/orders/${order._id}`)
+    app.put('/orders/:id', async (req, res) => {
+        await Order.findByIdAndUpdate(req.params.id, req.body)
+            .then( async order => {
+            // res.redirect(`/orders/${order._id}`)
+            await order.save();
+            res.send(order);
+            await res.json(order); // TODO: delete this line if there is problem
             })
             .catch(err => {
             console.log(err.message)

@@ -30,9 +30,13 @@ class OrderForm extends FormMethods {
         // if updating
         if (order._id) {
             const body = {...order};
+            console.log(body);
             delete body._id
-            return axios.put("http://localhost:5001" + "/" + order._id, body)
+            return axios.put(`http://localhost:5001/${order._id}`, body);
         }
+        
+        console.log(order);
+        
         // new order
         return axios.post("http://localhost:5001/orders", order);
     };

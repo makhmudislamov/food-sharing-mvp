@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify"; //TODO: implement toast alert
+// import { ToastContainer } from "react-toastify"; //TODO: implement toast alert
 import NavigationBar from './components/navbar';
 import Footer from './components/footer';
 import Body from './components/homePageBody';
@@ -18,7 +18,6 @@ class App extends Component {
   render() { 
     return (
         <React.Fragment>
-            <ToastContainer /> 
             <NavigationBar />
             <main className="conrainter">
                 <Switch>

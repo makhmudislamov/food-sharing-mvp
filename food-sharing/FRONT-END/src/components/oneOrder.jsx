@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
+// import FormMethods from './forms/common/formMethods';
+// import { Card } from 'react-bootstrap';
+// import { Link } from "react-router-dom";
+// import axios from 'axios';
+// const dbUri = "http://localhost:5001/home";
+
 
 class OneOrder extends Component {
-    state = {  }
-    render() { 
-        return ( <h1>
-            One order details are here
-            Pickup and delivery time, address, contact info etc should be ehre
-        </h1> );
+    state = {
+        orders: []
+            
+    };
+
+    render() {
+        return (
+            <React.Fragment>
+               <h1>Order details are here</h1>
+            </React.Fragment>
+        );
     }
 }
  
