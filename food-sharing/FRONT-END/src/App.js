@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import NavigationBar from './components/navbar';
 import Footer from './components/footer';
 import Body from './components/homePageBody';
-import SignUpForm from './components/forms/signupForm';
+import SignUpForm from './components/forms/signUpForm';
 import Dashboard from "./components/Dashboard";
 import NotFound from './components/notFound';
 import LoginForm from './components/forms/loginForm';

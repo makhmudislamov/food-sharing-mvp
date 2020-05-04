@@ -69,7 +69,8 @@ class SignUpForm extends FormMethods {
                 style={{
                     width: "30rem",
                     marginLeft: "100px",
-                    marginTop: "90px"
+                    marginTop: "70px",
+                    marginBottom: "70px"
                 }}
             >
                 <Card.Body>
