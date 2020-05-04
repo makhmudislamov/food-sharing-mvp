@@ -15,7 +15,10 @@ class OneOrder extends Component {
     render() {
         return (
             <React.Fragment>
-               <h1>Order details are here</h1>
+               <h1>Order details</h1>
+               <h2>Org Name: Kind Hearts</h2>
+               <h2>Address: 123 Main Street</h2>
+               <h2>Special Instructions: Please call 5 min before arriving</h2>
             </React.Fragment>
         );
     }
