@@ -62,14 +62,15 @@ const NavigationBar = ({ user }) => {
                     )}
                     {user && (
                         <React.Fragment>
-                            <Button
+                            {/* <Button
                                 style={{ padding: "12px" }}
                                 className="m-1"
                                 href="/profile"
                                 variant="outline-success"
                             >
                                 {user.name}
-                            </Button>
+                            </Button> */}
+                            
                             <Button
                                 style={{ padding: "12px" }}
                                 className="m-1"

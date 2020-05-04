@@ -28,7 +28,7 @@ class App extends Component {
     return (
         <React.Fragment>
             <ToastContainer />
-            <NavigationBar user={this.state.user}/>
+            <NavigationBar user={this.state.user} />
             <main className="conrainter">
                 <Switch>
                     <Route path="/" exact component={Body} />
