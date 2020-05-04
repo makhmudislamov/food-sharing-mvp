@@ -10,6 +10,8 @@ const express = require("express");
 module.exports = (app) => {
     app.post("/api/auth", async (req, res) => {
         const { error } = validate(req.body);
+        console.log("error", {error});
+        
         if (error) return res.status(400).send(error.details[0].message);
 
         let user = await User.findOne({ username: req.body.username });
