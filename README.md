@@ -3,7 +3,7 @@
 ![landing page](landing_page.png)
 ## Description
 
-Local restaurants can donate food via the platform. Volunteer-couriers will deliver the food to local homeless shelters and other organizations that need food donations. This web app is MVP version of this idea
+Local restaurants can donate food via the platform. Volunteer-couriers will deliver the food to local homeless shelters and other organizations that need food donations. This web app is MVP version of this idea. As of July 2020, this project is named Foodonate, a non-profit at a startup stage. [See this repo](https://github.com/makhmudislamov/foodonate_demo/blob/master/README.md) for updated version of this project.
 
 ## How to run this project in your machine
 1. Download this repo
