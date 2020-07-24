@@ -1,5 +1,6 @@
 # Food Sharing Web platform
 
+![landing page](landing_page.png)
 ## Description
 
 Local restaurants can donate food via the platform. Volunteer-couriers will deliver the food to local homeless shelters and other organizations that need food donations. This web app is MVP version of this idea
