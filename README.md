@@ -1,4 +1,4 @@
-# Food Sharing Web platform
+# Zero Hunger - Food Sharing Web platform
 
 ![landing page](landing_page.png)
 ## Description
